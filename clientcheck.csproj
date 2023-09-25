@@ -10,6 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="font\MaruBuri-SemiBold.ttf" />
     <None Remove="Resources\cool.jpg" />
     <None Remove="View\cool.jpg" />
   </ItemGroup>
@@ -19,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="font\MaruBuri-SemiBold.ttf" />
     <Resource Include="Resources\cool.jpg" />
   </ItemGroup>
 
