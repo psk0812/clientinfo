@@ -61,6 +61,21 @@ namespace clientcheck.View
         {
 
         }
+
+        private void namebox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            namebox.Text = String.Empty;
+        }
+
+        private void agebox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            agebox.Text = String.Empty;
+        }
+
+        private void Button_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
      
  }
