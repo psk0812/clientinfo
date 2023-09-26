@@ -103,6 +103,11 @@ namespace clientcheck.View
             else { this.WindowState = WindowState.Maximized; }
            
         }
+
+        private void Grid_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
      
  }
