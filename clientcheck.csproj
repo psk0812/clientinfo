@@ -10,16 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\cool.jpg" />
     <None Remove="View\cool.jpg" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\cool.jpg" />
   </ItemGroup>
 
   <ItemGroup>

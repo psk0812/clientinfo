@@ -24,26 +24,7 @@ namespace clientcheck.View
         {
             InitializeComponent();
             
-            Border dashdotdot = FindName("dashdotdot") as Border;
-
-            if (dashdotdot != null)
-            {
-               
-                LinearGradientBrush borderBrush = new LinearGradientBrush();
-                borderBrush.StartPoint = new Point(0, 1);
-                borderBrush.EndPoint = new Point(1, 0);
-                borderBrush.GradientStops.Add(new GradientStop(Colors.RoyalBlue, 0));
-                borderBrush.GradientStops.Add(new GradientStop(Colors.HotPink, 0.85));
-
-               
-                Pen borderPen = new Pen(borderBrush, 10);
-                borderPen.DashStyle = new DashStyle(new double[] { 2, 2, 2, 2 }, 0);
-                borderPen.DashCap = PenLineCap.Triangle;
-
-               
-            }
-
-            Color UIblue = Color.FromRgb(0, 100, 245);
+            
             Height = SystemParameters.PrimaryScreenHeight;
 
 
@@ -52,39 +33,6 @@ namespace clientcheck.View
             this.Height = Height * 0.7;
         }
 
-        private void titlebar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-        }
-
-        private void titlebar1_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-        }
-
-
-        private void titlebar3_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-        }
-
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                DragMove();
-            }
-
-        }
 
         private void minimize_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -107,6 +55,11 @@ namespace clientcheck.View
         private void Grid_MouseDown_1(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
      
