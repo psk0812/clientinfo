@@ -15,6 +15,8 @@ namespace clientcheck.Model
             public string Name { get; set; }
             public int Age { get; set; }
             public string Phonenumb { get; set; }
+
+            public bool delete { get; set; }
             
           
         }

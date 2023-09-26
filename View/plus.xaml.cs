@@ -12,24 +12,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace clientcheck
+namespace clientcheck.View
 {
     /// <summary>
     /// Window1.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class Window1 : Window
+    public partial class plus : Window
     {
-        public Window1()
+        public plus()
         {
             InitializeComponent();
+            Console.Write("load");
         }
+
+    
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
-        private void Button_MouseDown(object sender, MouseButtonEventArgs e)
+
+        private void Button_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

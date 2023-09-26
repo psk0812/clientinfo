@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace clientcheck.View
 {
     /// <summary>
@@ -72,10 +73,28 @@ namespace clientcheck.View
             agebox.Text = String.Empty;
         }
 
+        private void btn_add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_add_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
         private void Button_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
         }
+
+        private void btn_add_Click_1(object sender, RoutedEventArgs e)
+        {
+            plus pluswindow = new plus();
+            pluswindow.ShowDialog(); 
+        }
+
+      
     }
      
  }

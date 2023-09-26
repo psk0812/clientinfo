@@ -28,7 +28,8 @@
                 <RowDefinition Height="19"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="38"/>
-                <RowDefinition Height="366*"/>
+                <RowDefinition Height="38*"/>
+                <RowDefinition Height="341*"/>
                 <RowDefinition Height="10*"/>
                 <!-- 두 번째 행 -->
             </Grid.RowDefinitions>
@@ -65,7 +66,7 @@
             <Grid Grid.ColumnSpan="4"/>
             <Grid Grid.ColumnSpan="4"/>
 
-            <Button Content="+ Add Member" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Grid.Row="1" Height="40"  Width="155"   Background="#FF684EDF" FontWeight="Bold" FontSize="18" Foreground="White" FontFamily="Bahnschrift SemiLight" BorderBrush="#FF684EDF">
+            <Button x:Name="btn_add" Content="+ Add Member" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top"  Grid.Row="1" Height="40"  Width="155"   Background="#FF684EDF" FontWeight="Bold" FontSize="18" Foreground="White" FontFamily="Bahnschrift SemiLight" BorderBrush="#FF684EDF" Click="btn_add_Click_1" Margin="0,47,0,0">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -85,13 +86,19 @@
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
                 </Button.Resources>
-
+            </Button>
+            <Button Content="삭제" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="5"  Grid.ColumnSpan="2"  VerticalAlignment="Top" Width="51" Background="#FFFFAAAA" Foreground="White" FontSize="10" FontWeight="Bold" Height="24" Margin="0,10,0,0" BorderBrush="#FFFFAAAA" MouseDown="Button_MouseDown" >
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                </Button.Resources>
             </Button>
 
             <DataGrid Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"  Margin="0,10,0,0" SelectionChanged="DataGrid_SelectionChanged"  ScrollViewer.HorizontalScrollBarVisibility="Auto"
             ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="Transparent" BorderThickness="0" 
             AutoGenerateColumns ="False"  GridLinesVisibility="None" RowHeaderWidth="0" Background="#F3F2F3" 
-            CanUserAddRows="False" ItemsSource="{Binding ClientLists}" FontSize="22">
+            CanUserAddRows="False" ItemsSource="{Binding ClientLists}" FontSize="22" Grid.RowSpan="2">
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
                         <!-- 행의 테두리 색상을 지정합니다 -->
@@ -102,13 +109,30 @@
                 </DataGrid.RowStyle>
                 <DataGrid.Columns>
 
-                    <DataGridCheckBoxColumn CanUserResize="False" Width="auto">
+                    <DataGridCheckBoxColumn CanUserResize="False" Width="auto" >
                         <DataGridCheckBoxColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="Background" Value="#F3F2F3" />
                             </Style>
                         </DataGridCheckBoxColumn.HeaderStyle>
+                        <DataGridCheckBoxColumn.ElementStyle>
+                            <Style TargetType="CheckBox">
+                                <!-- 체크박스 스타일 지정 -->
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="BorderBrush" Value="#F3F2F3" />
+                                <Setter Property="BorderThickness" Value="2" />
+                                <Setter Property="Padding" Value="5" />
+                                <!-- 체크박스 확대 -->
+                                <Setter Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="2" ScaleY="2" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridCheckBoxColumn.ElementStyle>
                     </DataGridCheckBoxColumn>
+                    
+                    
                     <DataGridTextColumn Header="" IsReadOnly="True"  Width="20">
                         <!--체크박스와 공간을 만들어 주기 위한 행-->
                         <DataGridTextColumn.HeaderStyle>
@@ -142,7 +166,7 @@
 
                 </DataGrid.Columns>
             </DataGrid>
-            
+
 
 
 
