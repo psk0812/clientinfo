@@ -51,7 +51,7 @@ namespace clientcheck.ViewModel
 
         private void ExecuteDeleteCommand(object obj)
         {
-            Debug.WriteLine("바인딩이 클릭되는 거 확인");
+          
             DelClient(new client() { Name = delName, Age = delAge, Phonenumb = delPhonenumb, delete = true });
         }
 
@@ -62,11 +62,7 @@ namespace clientcheck.ViewModel
 
         private void DelClient(object obj)
         {
-            Debug.WriteLine("눌리긴했는데");
-            Debug.WriteLine(delName);
-            Debug.WriteLine(delAge);
-            Debug.WriteLine(delPhonenumb);
-            
+            Debug.WriteLine("여기까지 왔따");
             DeleteClient(new client() { Name = delName, Age = delAge, Phonenumb = delPhonenumb, delete = true });
             
         }

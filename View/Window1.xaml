@@ -77,11 +77,11 @@
             </Button>
             <Label Content="Filter by" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="3"  FontWeight="Bold" FontFamily="Bahnschrift SemiLight" FontSize="14" Height="26" Width="62" Margin="0,0,0,38" Grid.RowSpan="2"/>
 
-            <TextBox x:Name="namebox" Text="Name" Grid.Row="3"  Grid.Column="3" HorizontalAlignment="Center" Margin="0,5,0,5" Width="155" Background="White" Foreground="#FFCDD5DD" GotFocus="namebox_GotFocus" />
-            <TextBox x:Name="agebox" Text="Age" Grid.Row="4"  Grid.Column="3" HorizontalAlignment="Center" Margin="0,5,0,5" Width="155" Background="White" Foreground="#FFCDD5DD" GotFocus="agebox_GotFocus" />
+            <TextBox x:Name="namebox" Text="Name" Grid.Row="3"  Grid.Column="3" HorizontalAlignment="Center" Margin="0,5,0,5" Width="155" Background="White" Foreground="#FF8B9197" GotFocus="namebox_GotFocus" />
+            <TextBox x:Name="agebox" Text="Age" Grid.Row="4"  Grid.Column="3" HorizontalAlignment="Center" Margin="0,5,0,5" Width="155" Background="White" Foreground="#FF8B9197" GotFocus="agebox_GotFocus" />
 
 
-            <Button x:Name="btn_find" Content="조회" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="4"  Grid.ColumnSpan="2"  VerticalAlignment="Top" Width="51" Background="#FFBBAAFF" Foreground="White" FontSize="10" FontWeight="Bold" Height="24" Margin="0,10,0,0" BorderBrush="#FFBBAAFF"  >
+            <Button x:Name="btn_find" Content="조회" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="4"  Grid.ColumnSpan="2"  VerticalAlignment="Top" Width="51" Background="#FFBBAAFF" Foreground="White" FontSize="10" FontWeight="Bold" Height="24" Margin="0,10,0,0" BorderBrush="#FFBBAAFF" Click="btn_find_Click"  >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -137,7 +137,7 @@
                     </DataGridTextColumn>
 
 
-                    <DataGridTemplateColumn Header="Delete" Width="70">
+                    <DataGridTemplateColumn Header="Delete" Width="100">
                         <DataGridTemplateColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="Background" Value="#F3F2F3" />
@@ -145,16 +145,37 @@
                         </DataGridTemplateColumn.HeaderStyle>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button x:Name="btndelete" Content="삭제" Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Background="#F199BC" Foreground="White"  BorderBrush="#F199BC" Click="btndelete_Click">
+                                <Button x:Name="btndelete"  Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"   MouseDoubleClick="btndelete_MouseDoubleClick">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="20"/>
                                         </Style>
                                     </Button.Resources>
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding delete}" Value="True">
+                                                    <Setter Property="Foreground" Value="White" />
+                                                    <Setter Property="Background" Value="#F199BC" />
+                                                    <Setter Property="BorderBrush" Value="White" />
+                                                    <Setter Property="Content" Value="삭제" />
+                                                    
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding delete}" Value="False">
+                                                    <Setter Property="Foreground" Value="Black" />
+                                                    <Setter Property="Background" Value="White" />
+                                                    <Setter Property="BorderBrush" Value="White" />
+                                                    <Setter Property="Content" Value="고정멤버" />
+                                                    
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+
                     <DataGridTextColumn Header="" Width="100*">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">

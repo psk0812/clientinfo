@@ -95,6 +95,8 @@ namespace clientcheck.View
         {
             plus pluswindow = new plus();
             pluswindow.ShowDialog(); 
+
+
         }
 
     
@@ -115,20 +117,25 @@ namespace clientcheck.View
             if (ageFilter == "Age")
             { ageFilter = ""; }
 
-            var filteredClients = ClientList.Where(client =>
-                (string.IsNullOrEmpty(nameFilter) || client.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)) &&
-                (string.IsNullOrEmpty(ageFilter) || client.Age.ToString().Contains(ageFilter))
-            ).ToList();
+            
+             var filteredClients = ClientList.Where(client =>
+                    (string.IsNullOrEmpty(nameFilter) || client.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)) &&
+                    (string.IsNullOrEmpty(ageFilter) || client.Age.ToString().Contains(ageFilter))
+                ).ToList();
 
             datagrid_client.ItemsSource = filteredClients;
+           
         }
 
-        private void btndelete_Click(object sender, RoutedEventArgs e)
+    
+
+        private void btndelete_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Button clickedButton = (Button)sender;
             // 클릭된 버튼을 포함한 행을 찾습니다.
             DependencyObject depObj = (DependencyObject)sender;
 
+            Debug.Write("클릭성공");
             while (!(depObj is DataGridRow) && depObj != null)
             {
                 depObj = VisualTreeHelper.GetParent(depObj);
@@ -140,17 +147,21 @@ namespace clientcheck.View
                 // 해당 행의 데이터에 액세스합니다.
                 client rowData = (client)dataGridRow.DataContext;
 
-               
+
                 // 각 열의 데이터에 접근할 수 있습니다.
                 Viewmodelmanger.delName = rowData.Name;
                 Viewmodelmanger.delAge = rowData.Age;
                 Viewmodelmanger.delPhonenumb = rowData.Phonenumb;
+
+                Debug.Write(rowData.Name);
 
                 // 필요한 데이터를 사용하여 작업을 수행합니다.
             };
 
 
         }
+
+      
     }
      
  }

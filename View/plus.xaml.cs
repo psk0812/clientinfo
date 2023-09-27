@@ -27,6 +27,9 @@ namespace clientcheck.View
             InitializeComponent();
             AddClientVIewModel addclientviewmodel = new AddClientVIewModel();
             this.DataContext = addclientviewmodel;
+            namebox.Text = "";
+            agebox.Text = "";
+            telbox.Text = "";
 
         }
 
@@ -43,7 +46,9 @@ namespace clientcheck.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
             this.Close();
+            
         }
 
       
