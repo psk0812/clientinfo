@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -59,16 +60,28 @@ namespace clientcheck.View
         {
             try
             {
-               
-                  if (namebox.Text != "" && agebox.Text != "" && telbox.Text != "")
-                { this.Close(); }
+                bool isphonenumb = Regex.IsMatch(telbox.Text, @"^\d{3}-\d{4}-\d{4}$");
+
+                bool isNumeric = int.TryParse(agebox.Text, out int result);
+
+
+
+                if (namebox.Text == "" || agebox.Text == "" || telbox.Text == "" )
+                { MessageBox.Show("빈칸을 확인해주세요"); }
+                else if (!isNumeric)
+                { MessageBox.Show("나이는 숫자로만 입력해주세요"); }
+                else if (!isphonenumb)
+                { MessageBox.Show("번호 형식을 확인해주세요"); }
                 else
-                { MessageBox.Show("입력을 확인해주세요"); }
+                { this.Close(); }
                
         
                 
             }
-            catch { MessageBox.Show("입력을 확인해주세요"); }
+            catch 
+            { 
+                MessageBox.Show("입력을 확인해주세요"); 
+            }
         }
 
 

@@ -36,6 +36,7 @@ namespace clientcheck.Model
             {
                 ClientList.Add(client1);
                 SaveDataToCSV();
+                System.Threading.Thread.Sleep(1000); // 1초 대기
             }
             catch (Exception ex) 
             {
@@ -60,6 +61,7 @@ namespace clientcheck.Model
                     ClientList.Remove(clientToDelete);
                 }
                 SaveDataToCSV();
+                System.Threading.Thread.Sleep(1000); // 1초 대기
             }
             catch (Exception ex)
             {
@@ -82,7 +84,7 @@ namespace clientcheck.Model
         {
             try
             {
-                using (var sr = new StreamReader("D:/notdie/clientcheck/Model/data.csv", Encoding.Default)) // 인코딩을 UTF-8로 설정
+                using (var sr = new StreamReader("D:/notdie/client_finish/Model/data.csv", Encoding.Default)) // 인코딩을 UTF-8로 설정
                 using (var parser = new TextFieldParser(sr))
                 {
                     parser.TextFieldType = FieldType.Delimited;
@@ -119,7 +121,7 @@ namespace clientcheck.Model
             try
             {
                 Debug.WriteLine("저장");
-                using (var sw = new StreamWriter("D:/notdie/clientcheck/Model/data.csv", false, Encoding.Default)) // 인코딩을 UTF-8로 설정
+                using (var sw = new StreamWriter("D:/notdie/client_finish/Model/data.csv", false, Encoding.Default)) // 인코딩을 UTF-8로 설정
                 {
                     foreach (var client in ClientList)
                     {

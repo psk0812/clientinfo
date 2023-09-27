@@ -91,13 +91,15 @@ namespace clientcheck.View
 
     
 
-        private void btn_add_Click_1(object sender, RoutedEventArgs e)
+        private async void btn_add_Click_1(object sender, RoutedEventArgs e)
         {
             plus pluswindow = new plus();
            
             pluswindow.ShowDialog();
 
-            filtered_upgrade();
+            await Task.Delay(200);//한번에 1000하니 너무 김
+            filtered_upgradeAsync();
+            await Task.Delay(800);
         }
 
 
@@ -106,15 +108,18 @@ namespace clientcheck.View
 
 
 
-        private void btn_find_Click(object sender, RoutedEventArgs e)
+        private async void btn_find_Click(object sender, RoutedEventArgs e)
         {
-            filtered_upgrade();
+
+            await Task.Delay(200);//한번에 1000하니 너무 김
+            filtered_upgradeAsync();
+            await Task.Delay(800);
 
 
         }
 
     
-        private void filtered_upgrade()
+        private async void filtered_upgradeAsync()
         {
             string nameFilter = namebox.Text;
             string ageFilter = agebox.Text;
@@ -132,7 +137,7 @@ namespace clientcheck.View
                ).ToList();
 
             datagrid_client.ItemsSource = filteredClients;
-
+            await Task.Delay(1000);
 
 
 
@@ -149,10 +154,10 @@ namespace clientcheck.View
                 depObj = VisualTreeHelper.GetParent(depObj);
             }
 
-          
+
             if (depObj is DataGridRow dataGridRow)
             {
-               
+
                 client rowData = (client)dataGridRow.DataContext;
 
 
@@ -164,13 +169,14 @@ namespace clientcheck.View
 
                 // 필요한 데이터를 사용하여 작업을 수행합니다.
             };
-            await Task.Delay(200);//한번에 1000하니 너무 김
-            filtered_upgrade();
-            await Task.Delay(800); 
+            ;//한번에 1000하니 너무 김
+            await Task.Delay(200);
+            filtered_upgradeAsync();
+            await Task.Delay(800);
 
         }
 
-      
+
     }
      
  }
