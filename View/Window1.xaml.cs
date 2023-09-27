@@ -73,12 +73,14 @@ namespace clientcheck.View
         private void namebox_GotFocus(object sender, RoutedEventArgs e)
         {
             namebox.Text = String.Empty;
-            agebox.Text = String.Empty;
+           
+
         }
 
         private void agebox_GotFocus(object sender, RoutedEventArgs e)
         {
-            namebox.Text = String.Empty;
+           
+
             agebox.Text = String.Empty;
         }
 
@@ -112,6 +114,12 @@ namespace clientcheck.View
         {
             string nameFilter = namebox.Text;
             string ageFilter = agebox.Text;
+
+            // 디자인으로 넣어넣은 글씨가 필터링 될 오류 제거
+            if (nameFilter == "Nmae")
+            { nameFilter = ""; }
+            if (nameFilter == "Age")
+            { nameFilter = ""; }
 
             var filteredClients = ClientList.Where(client =>
                 (string.IsNullOrEmpty(nameFilter) || client.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)) &&
