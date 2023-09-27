@@ -15,6 +15,7 @@ using System.Windows.Input;
 using static clientcheck.Model.ModelManager;
 using clientcheck.Model;
 using clientcheck.View;
+using System.Diagnostics;
 
 namespace clientcheck.ViewModel
 {
@@ -24,14 +25,17 @@ namespace clientcheck.ViewModel
 
 
         public static ObservableCollection<client> ClientLists { get; set; }
+        public ICommand DeleteClientCommand { get; set; }
 
+        public string DelName { get; set; }
+        public string DelAge { get; set; }
+        public string DelPhonenumb { get; set; }
+
+
+        public ICommand ShowWindowCommand { get; set; }
      
 
-        public ICommand FilteredClientCommand { get; set; }
-        public ICommand ShowWindowCommand { get; set; }
-        public ICommand FilterClientCommand { get; set; }
 
-  
 
         public Viewmodelmanger()
         {
@@ -39,11 +43,37 @@ namespace clientcheck.ViewModel
             ClientLists = GetClients();
             ShowWindowCommand = new RelayCommand(ShowWindow, CanshowWindow);
 
+            DeleteClientCommand = new RelayCommand(DeleteClient, CanDeleteClient);
+
         }
 
+        private bool CanDeleteClient(object obj)
+        {
+            return true;
+        }
+
+        private void DeleteClient(object obj)
+        {
+            {
+
+                IEnumerable<client> selectedClients = ClientList.Where(c => c.IsSelected);
+                ObservableCollection<client> selectedClientsCollection = new ObservableCollection<client>(selectedClients);
+                foreach (client client in selectedClientsCollection)
+                {
+                    Debug.WriteLine(client);
+                    ModelManager.DeleteClient(client);
+                  
+                }
+
+                
+            }
+        }
 
     
-   
+
+
+
+
 
         private bool CanshowWindow(object obj)
         {

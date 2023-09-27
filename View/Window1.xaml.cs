@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 using clientcheck.ViewModel;
 
@@ -84,20 +85,11 @@ namespace clientcheck.View
             agebox.Text = String.Empty;
         }
 
-        private void btn_add_Click(object sender, RoutedEventArgs e)
-        {
+       
 
-        }
+      
 
-        private void btn_add_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Button_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
+    
 
         private void btn_add_Click_1(object sender, RoutedEventArgs e)
         {
@@ -110,16 +102,18 @@ namespace clientcheck.View
        
 
    
-        private void btn_plus_Click(object sender, RoutedEventArgs e)
+
+
+        private void btn_find_Click(object sender, RoutedEventArgs e)
         {
             string nameFilter = namebox.Text;
             string ageFilter = agebox.Text;
 
             // 디자인으로 넣어넣은 글씨가 필터링 될 오류 제거
-            if (nameFilter == "Nmae")
+            if (nameFilter == "Name")
             { nameFilter = ""; }
-            if (nameFilter == "Age")
-            { nameFilter = ""; }
+            if (ageFilter == "Age")
+            { ageFilter = ""; }
 
             var filteredClients = ClientList.Where(client =>
                 (string.IsNullOrEmpty(nameFilter) || client.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)) &&
@@ -127,9 +121,11 @@ namespace clientcheck.View
             ).ToList();
 
             datagrid_client.ItemsSource = filteredClients;
-
-
         }
+
+        
+
+       
     }
      
  }

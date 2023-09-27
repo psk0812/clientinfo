@@ -82,14 +82,7 @@
             <TextBox x:Name="agebox" Text="Age" Grid.Row="4"  Grid.Column="3" HorizontalAlignment="Center" Margin="0,5,0,5" Width="155" Background="White" Foreground="#FFCDD5DD" GotFocus="agebox_GotFocus" />
 
 
-            <Button x:Name="btn_plus" Content="조회" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="4"  Grid.ColumnSpan="2"  VerticalAlignment="Top" Width="51" Background="#FFBBAAFF" Foreground="White" FontSize="10" FontWeight="Bold" Height="24" Margin="0,10,0,0" BorderBrush="#FFBBAAFF" MouseDown="Button_MouseDown" Click="btn_plus_Click" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="10"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button Content="삭제" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="5"  Grid.ColumnSpan="2"  VerticalAlignment="Top" Width="51" Background="#FFFFAAAA" Foreground="White" FontSize="10" FontWeight="Bold" Height="24" Margin="0,10,0,0" BorderBrush="#FFFFAAAA" MouseDown="Button_MouseDown" >
+            <Button x:Name="btn_find" Content="조회" Grid.Column="4" HorizontalAlignment="Center" Grid.Row="4"  Grid.ColumnSpan="2"  VerticalAlignment="Top" Width="51" Background="#FFBBAAFF" Foreground="White" FontSize="10" FontWeight="Bold" Height="24" Margin="0,10,0,0" BorderBrush="#FFBBAAFF"  >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -111,29 +104,6 @@
                 </DataGrid.RowStyle>
                 <DataGrid.Columns>
 
-                    <DataGridCheckBoxColumn CanUserResize="False" Width="auto" >
-                        <DataGridCheckBoxColumn.HeaderStyle>
-                            <Style TargetType="DataGridColumnHeader">
-                                <Setter Property="Background" Value="#F3F2F3" />
-                            </Style>
-                        </DataGridCheckBoxColumn.HeaderStyle>
-                        <DataGridCheckBoxColumn.ElementStyle>
-                            <Style TargetType="CheckBox">
-                                <!-- 체크박스 스타일 지정 -->
-                                <Setter Property="Background" Value="White" />
-                                <Setter Property="BorderBrush" Value="#F3F2F3" />
-                                <Setter Property="BorderThickness" Value="2" />
-                                <Setter Property="Padding" Value="5" />
-                                <!-- 체크박스 확대 -->
-                                <Setter Property="LayoutTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="2" ScaleY="2" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </DataGridCheckBoxColumn.ElementStyle>
-                    </DataGridCheckBoxColumn>
-
 
                     <DataGridTextColumn Header="" IsReadOnly="True"  Width="20">
                         <!--체크박스와 공간을 만들어 주기 위한 행-->
@@ -143,6 +113,8 @@
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
+                    
+                    
                     <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Name}" Width="100*">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
@@ -157,7 +129,7 @@
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Phonenumb" Binding="{Binding Phonenumb}" Width="200*">
+                    <DataGridTextColumn Header="Phone Number" Binding="{Binding Phonenumb}" Width="200*">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
                                 <Setter Property="Background" Value="#F3F2F3" />
@@ -165,6 +137,32 @@
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
 
+
+                    <DataGridTemplateColumn Header="Delete" Width="70">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="#F3F2F3" />
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="삭제" Background="#F199BC" Foreground="White"  BorderBrush="#F199BC">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="20"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="" Width="100*">
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="#F3F2F3" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
 
                 </DataGrid.Columns>
             </DataGrid>

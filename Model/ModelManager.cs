@@ -19,6 +19,7 @@ namespace clientcheck.Model
 
         public class client
         {
+            public bool IsSelected { get; set; }
             public string Name { get; set; }
             public string Age { get; set; }
             public string Phonenumb { get; set; }
@@ -30,7 +31,12 @@ namespace clientcheck.Model
             ClientList.Add(client1);
         }
 
-        
+
+        public static void DeleteClient(client client1)
+        {
+            ClientList.Remove(client1);
+        }
+
 
 
         public ModelManager()
@@ -57,6 +63,7 @@ namespace clientcheck.Model
 
                         client newClient = new client
                         {
+                           IsSelected = false,
                             Name = fields[0],
                             Age = fields[1],
                             Phonenumb = fields[2],
