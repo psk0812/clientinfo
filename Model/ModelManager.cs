@@ -32,26 +32,39 @@ namespace clientcheck.Model
 
         public static void AddClient(client client1)
         {
-            ClientList.Add(client1);
-            SaveDataToCSV();
+            try
+            {
+                ClientList.Add(client1);
+                SaveDataToCSV();
+            }
+            catch (Exception ex) 
+            {
+                Debug.WriteLine("AddClient에러");
+            }
         }
 
 
         public static void DeleteClient(client client1)
         {
-           
-            var clientToDelete = ClientList.FirstOrDefault(c =>
+            try
+            {
+
+                var clientToDelete = ClientList.FirstOrDefault(c =>
                 c.Name == client1.Name &&
                 c.Age == client1.Age &&
                 c.Phonenumb == client1.Phonenumb &&
                 c.delete == client1.delete);
+                if (clientToDelete != null)
+                {
 
-            if (clientToDelete != null)
-            {
-                
-                ClientList.Remove(clientToDelete);
+                    ClientList.Remove(clientToDelete);
+                }
+                SaveDataToCSV();
             }
-            SaveDataToCSV();
+            catch (Exception ex)
+            {
+                Debug.WriteLine("DeleteClient에러");
+            }
 
         }
 
