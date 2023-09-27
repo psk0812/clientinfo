@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -13,13 +14,15 @@ namespace clientcheck.Model
 {
     public class ModelManager
     {
-     
 
+        int count = 0;
+
+        bool for_topten;//처음에 만든 10개만 삭제 안하게 하기 위함.
         public static ObservableCollection<client> ClientList { get; set; }
 
 
-        public class client
-        {
+        public class client 
+        { 
     
             public string Name { get; set; }
             public string Age { get; set; }
@@ -30,6 +33,7 @@ namespace clientcheck.Model
         public static void AddClient(client client1)
         {
             ClientList.Add(client1);
+            SaveDataToCSV();
         }
 
 
@@ -47,7 +51,8 @@ namespace clientcheck.Model
                 
                 ClientList.Remove(clientToDelete);
             }
-            
+            SaveDataToCSV();
+
         }
 
 
@@ -73,14 +78,17 @@ namespace clientcheck.Model
                     while (!parser.EndOfData)
                     {
                         string[] fields = parser.ReadFields();
+                        count += 1;
 
+                        if (count <= 10) { for_topten = false; }
+                        else { for_topten = true; }
                         client newClient = new client
                         {
                           
                             Name = fields[0],
                             Age = fields[1],
                             Phonenumb = fields[2],
-                            delete = false // 기본값으로 설정
+                            delete = for_topten
                         };
 
                         ClientList.Add(newClient);
@@ -92,6 +100,28 @@ namespace clientcheck.Model
                 MessageBox.Show("CSV 파일을 불러오는 동안 오류가 발생했습니다: " + ex.Message);
             }
         }
+
+        public static void SaveDataToCSV()
+        {
+            try
+            {
+                Debug.WriteLine("저장");
+                using (var sw = new StreamWriter("D:/notdie/client/Model/data.csv", false, Encoding.Default)) // 인코딩을 UTF-8로 설정
+                {
+                    foreach (var client in ClientList)
+                    {
+                        Debug.WriteLine($"{client.Name},{client.Age},{client.Phonenumb},{client.delete}");
+                        string csvLine = $"{client.Name},{client.Age},{client.Phonenumb},{client.delete}";
+                        sw.WriteLine(csvLine);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CSV 파일을 저장하는 동안 오류가 발생했습니다: " + ex.Message);
+            }
+        }
+
 
         public static ObservableCollection<client> GetClients()
         {
