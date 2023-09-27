@@ -31,7 +31,7 @@ namespace clientcheck.View
         {
             InitializeComponent();
             Viewmodelmanger newviewmodel = new Viewmodelmanger();
-            this.DataContext = newviewmodel;
+            DataContext = newviewmodel;
 
             Height = SystemParameters.PrimaryScreenHeight;
 
@@ -123,9 +123,34 @@ namespace clientcheck.View
             datagrid_client.ItemsSource = filteredClients;
         }
 
-        
+        private void btndelete_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            // 클릭된 버튼을 포함한 행을 찾습니다.
+            DependencyObject depObj = (DependencyObject)sender;
 
-       
+            while (!(depObj is DataGridRow) && depObj != null)
+            {
+                depObj = VisualTreeHelper.GetParent(depObj);
+            }
+
+            // 찾은 DataGridRow를 사용합니다.
+            if (depObj is DataGridRow dataGridRow)
+            {
+                // 해당 행의 데이터에 액세스합니다.
+                client rowData = (client)dataGridRow.DataContext;
+
+               
+                // 각 열의 데이터에 접근할 수 있습니다.
+                Viewmodelmanger.delName = rowData.Name;
+                Viewmodelmanger.delAge = rowData.Age;
+                Viewmodelmanger.delPhonenumb = rowData.Phonenumb;
+
+                // 필요한 데이터를 사용하여 작업을 수행합니다.
+            };
+
+
+        }
     }
      
  }

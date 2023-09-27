@@ -17,9 +17,9 @@ namespace clientcheck.ViewModel
         
         public ICommand AddClientCommand { get; set; }
 
-        public string newName { get; set; }
-        public string newAge { get; set; }
-        public string newPhonenumb { get; set; }
+        public static string newName { get; set; }
+        public static  string newAge { get; set; }
+        public static string newPhonenumb { get; set; }
         
 
         public AddClientVIewModel()
@@ -36,7 +36,7 @@ namespace clientcheck.ViewModel
         private void AddClient(object obj)
         {
             if (!string.IsNullOrWhiteSpace(newName) && (!string.IsNullOrWhiteSpace(newAge)) && !string.IsNullOrWhiteSpace(newPhonenumb))
-            { ModelManager.AddClient(new client() { Name = newName, Age = newAge, Phonenumb = newPhonenumb, delete = true }); ; }
+            { ModelManager.AddClient(new client() { Name = newName, Age = newAge, Phonenumb = newPhonenumb, delete = true }); }
         }
     }
 }

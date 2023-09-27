@@ -75,7 +75,6 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Label Content="68 Members" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,38" Grid.Row="3" VerticalAlignment="Bottom" Width="155" FontWeight="Bold" FontFamily="Bahnschrift SemiLight" FontSize="16" Height="29" Grid.RowSpan="2"/>
             <Label Content="Filter by" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="3"  FontWeight="Bold" FontFamily="Bahnschrift SemiLight" FontSize="14" Height="26" Width="62" Margin="0,0,0,38" Grid.RowSpan="2"/>
 
             <TextBox x:Name="namebox" Text="Name" Grid.Row="3"  Grid.Column="3" HorizontalAlignment="Center" Margin="0,5,0,5" Width="155" Background="White" Foreground="#FFCDD5DD" GotFocus="namebox_GotFocus" />
@@ -113,8 +112,8 @@
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
-                    
-                    
+
+
                     <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Name}" Width="100*">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="DataGridColumnHeader">
@@ -146,7 +145,7 @@
                         </DataGridTemplateColumn.HeaderStyle>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="삭제" Background="#F199BC" Foreground="White"  BorderBrush="#F199BC">
+                                <Button x:Name="btndelete" Content="삭제" Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" Background="#F199BC" Foreground="White"  BorderBrush="#F199BC" Click="btndelete_Click">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="20"/>

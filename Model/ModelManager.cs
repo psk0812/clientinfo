@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,22 @@ namespace clientcheck.Model
 
         public static void DeleteClient(client client1)
         {
-            ClientList.Remove(client1);
+            Debug.WriteLine(client1.delete);
+            var clientToDelete = ClientList.FirstOrDefault(c =>
+                c.Name == client1.Name &&
+                c.Age == client1.Age &&
+                c.Phonenumb == client1.Phonenumb &&
+                c.delete == client1.delete);
+            if (clientToDelete != null)
+            {
+                Debug.WriteLine("여기까지는 오냐");
+                ClientList.Remove(clientToDelete);
+            }
+            foreach (var client in ClientList)
+            {
+                Debug.WriteLine($"Name: {client.Name}, Age: {client.Age}, Phone Number: {client.Phonenumb}" +
+                    $", bool: {client.delete}");
+            }
         }
 
 
