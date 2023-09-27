@@ -12,6 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using clientcheck.ViewModel;
+
+using clientcheck.Model;
+using static clientcheck.Model.ModelManager;
+using System.Diagnostics;
 
 namespace clientcheck.View
 {
@@ -24,8 +29,9 @@ namespace clientcheck.View
         public Window1()
         {
             InitializeComponent();
-            
-            
+            Viewmodelmanger newviewmodel = new Viewmodelmanger();
+            this.DataContext = newviewmodel;
+
             Height = SystemParameters.PrimaryScreenHeight;
 
 
@@ -34,6 +40,7 @@ namespace clientcheck.View
             this.Height = Height * 0.7;
         }
 
+       
 
         private void minimize_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -66,10 +73,12 @@ namespace clientcheck.View
         private void namebox_GotFocus(object sender, RoutedEventArgs e)
         {
             namebox.Text = String.Empty;
+            agebox.Text = String.Empty;
         }
 
         private void agebox_GotFocus(object sender, RoutedEventArgs e)
         {
+            namebox.Text = String.Empty;
             agebox.Text = String.Empty;
         }
 
@@ -94,7 +103,25 @@ namespace clientcheck.View
             pluswindow.ShowDialog(); 
         }
 
-      
+    
+
+       
+
+   
+        private void btn_plus_Click(object sender, RoutedEventArgs e)
+        {
+            string nameFilter = namebox.Text;
+            string ageFilter = agebox.Text;
+
+            var filteredClients = ClientList.Where(client =>
+                (string.IsNullOrEmpty(nameFilter) || client.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(ageFilter) || client.Age.ToString().Contains(ageFilter))
+            ).ToList();
+
+            datagrid_client.ItemsSource = filteredClients;
+
+
+        }
     }
      
  }

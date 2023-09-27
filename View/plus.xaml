@@ -4,9 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:clientcheck"
-        mc:Ignorable="d" WindowStyle="None"
-        
+        mc:Ignorable="d" WindowStyle="None"  xmlns:local1="clr-namespace:clientcheck.ViewModel"
         Title="Window1" Height="400" Width="300">
+    <Window.DataContext>
+        <local1:AddClientVIewModel/>
+    </Window.DataContext>
+
     <Grid Background="#F4F8FB">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -31,10 +34,11 @@
         <Label Content="이름" HorizontalAlignment="Left" Margin="49,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" Background="{x:Null}" Height="34" Width="46"/>
         <Label Content="나이" HorizontalAlignment="Left" Margin="49,0,0,0" Grid.Row="3" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" Height="33" Width="46"/>
         <Label Content="전화번호" HorizontalAlignment="Left" Margin="13,0,0,0" Grid.Row="4" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" Height="34" Width="82"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
-        <Button Content="추가" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="147" Height="41" Background="#FFFFC4C4" Foreground="#FFFFFDFD" FontSize="18" FontWeight="Bold" FontFamily="Yu Gothic UI" BorderBrush="#FFFFE8E8" MouseDown="Button_MouseDown_1">
+        <TextBox x:Name="namebox" Grid.Column="1" Text="{Binding newName}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
+        <TextBox x:Name="agebox" Grid.Column="1" Text="{Binding newAge}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" TextWrapping="Wrap" Width="150" Height="30" FontSize="18" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="telbox" Grid.Column="1" Text="{Binding newPhonenumb}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
+       
+        <Button x:Name="btn_plus" Content="추가" Command="{Binding AddClientCommand}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="147" Height="41" Background="#FFFFC4C4" Foreground="#FFFFFDFD" FontSize="18" FontWeight="Bold" FontFamily="Yu Gothic UI" BorderBrush="#FFFFE8E8" MouseDown="Button_MouseDown_1" Click="Button_Click_1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>

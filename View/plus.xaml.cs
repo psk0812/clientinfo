@@ -1,5 +1,7 @@
-﻿using System;
+﻿using clientcheck.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace clientcheck.View
 {
@@ -22,10 +25,13 @@ namespace clientcheck.View
         public plus()
         {
             InitializeComponent();
-            Console.Write("load");
+            AddClientVIewModel addclientviewmodel = new AddClientVIewModel();
+            this.DataContext = addclientviewmodel;
+
         }
 
-    
+ 
+
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -41,6 +47,23 @@ namespace clientcheck.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)//추가 버튼 닫히기
+        {
+            try
+            {
+        
+                this.Close();
+            }
+            catch { MessageBox.Show("입력을 확인해주세요"); }
         }
     }
 }
