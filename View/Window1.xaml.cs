@@ -94,16 +94,16 @@ namespace clientcheck.View
         private void btn_add_Click_1(object sender, RoutedEventArgs e)
         {
             plus pluswindow = new plus();
-            pluswindow.ShowDialog(); 
+           
+            pluswindow.ShowDialog();
 
-
+            filtered_upgrade();
         }
 
-    
+
 
        
 
-   
 
 
         private void btn_find_Click(object sender, RoutedEventArgs e)
@@ -140,7 +140,7 @@ namespace clientcheck.View
         private async void btndelete_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Button clickedButton = (Button)sender;
-            // 클릭된 버튼을 포함한 행을 찾습니다.
+            // 클릭된 버튼을 포함한 행찾기 시작
             DependencyObject depObj = (DependencyObject)sender;
 
             Debug.Write("클릭성공");
@@ -149,14 +149,13 @@ namespace clientcheck.View
                 depObj = VisualTreeHelper.GetParent(depObj);
             }
 
-            // 찾은 DataGridRow를 사용합니다.
+          
             if (depObj is DataGridRow dataGridRow)
             {
-                // 해당 행의 데이터에 액세스합니다.
+               
                 client rowData = (client)dataGridRow.DataContext;
 
 
-                // 각 열의 데이터에 접근할 수 있습니다.
                 Viewmodelmanger.delName = rowData.Name;
                 Viewmodelmanger.delAge = rowData.Age;
                 Viewmodelmanger.delPhonenumb = rowData.Phonenumb;
@@ -165,7 +164,7 @@ namespace clientcheck.View
 
                 // 필요한 데이터를 사용하여 작업을 수행합니다.
             };
-            await Task.Delay(200);
+            await Task.Delay(200);//한번에 1000하니 너무 김
             filtered_upgrade();
             await Task.Delay(800); 
 
