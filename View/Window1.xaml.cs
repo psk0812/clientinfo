@@ -108,6 +108,14 @@ namespace clientcheck.View
 
         private void btn_find_Click(object sender, RoutedEventArgs e)
         {
+            filtered_upgrade();
+
+
+        }
+
+    
+        private void filtered_upgrade()
+        {
             string nameFilter = namebox.Text;
             string ageFilter = agebox.Text;
 
@@ -117,19 +125,19 @@ namespace clientcheck.View
             if (ageFilter == "Age")
             { ageFilter = ""; }
 
-            
-             var filteredClients = ClientList.Where(client =>
-                    (string.IsNullOrEmpty(nameFilter) || client.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)) &&
-                    (string.IsNullOrEmpty(ageFilter) || client.Age.ToString().Contains(ageFilter))
-                ).ToList();
+
+            var filteredClients = ClientList.Where(client =>
+                   (string.IsNullOrEmpty(nameFilter) || client.Name.Contains(nameFilter, StringComparison.OrdinalIgnoreCase)) &&
+                   (string.IsNullOrEmpty(ageFilter) || client.Age.ToString().Contains(ageFilter))
+               ).ToList();
 
             datagrid_client.ItemsSource = filteredClients;
-           
+
+
+
+
         }
-
-    
-
-        private void btndelete_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private async void btndelete_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Button clickedButton = (Button)sender;
             // 클릭된 버튼을 포함한 행을 찾습니다.
@@ -157,7 +165,9 @@ namespace clientcheck.View
 
                 // 필요한 데이터를 사용하여 작업을 수행합니다.
             };
-
+            await Task.Delay(200);
+            filtered_upgrade();
+            await Task.Delay(800); 
 
         }
 
