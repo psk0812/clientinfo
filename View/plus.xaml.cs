@@ -36,36 +36,46 @@ namespace clientcheck.View
 
  
 
-
+        //타이틀바로 드래그해서 움직임
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            try
+            {
+                DragMove();
+            }
+
+            catch { Debug.WriteLine("Grid_MouseDown 에러 "); }
         }
 
 
        
-
+        //버튼을 클릭화면 화면 닫힘
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            this.Close();
-            
+            try
+            {
+                this.Close();
+            }
+           
+            catch { Debug.WriteLine(" Button_Click에러 "); }
         }
+        
 
       
 
 
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)//추가 버튼 닫히기
+        private void Button_Click_1(object sender, RoutedEventArgs e)//추가 완료 버튼
         {
             try
             {
+                ///000-0000-0000형식
                 bool isphonenumb = Regex.IsMatch(telbox.Text, @"^\d{3}-\d{4}-\d{4}$");
-
+                //숫자
                 bool isNumeric = int.TryParse(agebox.Text, out int result);
 
 
-
+                //빈칸이나 형식에 오류가 있는 경우 닫히지 않고 메시지가 뜸
                 if (namebox.Text == "" || agebox.Text == "" || telbox.Text == "" )
                 { MessageBox.Show("빈칸을 확인해주세요"); }
                 else if (!isNumeric)

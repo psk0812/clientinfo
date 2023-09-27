@@ -21,12 +21,14 @@ namespace clientcheck.Commands
 
 
         public bool CanExecute(object parameter)
-        {
+        {//ICommand의 사용여부 선택. 무조건 true로 사용함
             return _CanExcute(parameter);
         }
 
+
+        
         public void Execute(object parameter)
-        {
+        {//Icommand시에 진행할 내용
             _Execute(parameter);
         }
     }

@@ -30,18 +30,22 @@ namespace clientcheck.ViewModel
         }
 
         private bool CanAddClient(object obj)
-        {
+        {//어떠한 경우에라도 true. 조건은 AddClient.
             return true;
         }
 
         private void AddClient(object obj)
         {
-            bool isphonenumb = Regex.IsMatch(newPhonenumb, @"^\d{3}-\d{4}-\d{4}$");
+            try
+            {
+                bool isphonenumb = Regex.IsMatch(newPhonenumb, @"^\d{3}-\d{4}-\d{4}$");
 
-            bool isNumeric = int.TryParse(newAge, out int result);
-
-            if (!string.IsNullOrWhiteSpace(newName) && (!string.IsNullOrWhiteSpace(newAge)) && !string.IsNullOrWhiteSpace(newPhonenumb)&& isphonenumb&& isNumeric)
-            { ModelManager.AddClient(new client() { Name = newName, Age = newAge, Phonenumb = newPhonenumb, delete = true }); }
+                bool isNumeric = int.TryParse(newAge, out int result);
+                //형식, 빈칸등이 조건에 맞아야만 AddClient시행
+                if (!string.IsNullOrWhiteSpace(newName) && (!string.IsNullOrWhiteSpace(newAge)) && !string.IsNullOrWhiteSpace(newPhonenumb) && isphonenumb && isNumeric)
+                { ModelManager.AddClient(new client() { Name = newName, Age = newAge, Phonenumb = newPhonenumb, delete = true }); }
+            }
+            catch { Debug.WriteLine("AddClient오류"); }
         }
     }
 }

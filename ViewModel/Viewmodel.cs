@@ -42,6 +42,8 @@ namespace clientcheck.ViewModel
         {
             ModelManager newone = new ModelManager();
             ClientLists = GetClients();
+
+
             ShowWindowCommand = new RelayCommand(ShowWindow, CanshowWindow);
             DeleteCommand= new RelayCommand(ExecuteDeleteCommand, CanExecuteDeleteCommand);
 
@@ -51,8 +53,8 @@ namespace clientcheck.ViewModel
 
         private void ExecuteDeleteCommand(object obj)
         {
-          
-            DelClient(new client() { Name = delName, Age = delAge, Phonenumb = delPhonenumb, delete = true });
+            //멤버 삭제
+            ModelManager.DeleteClient(new client() { Name = delName, Age = delAge, Phonenumb = delPhonenumb, delete = true });
         }
 
         private bool CanExecuteDeleteCommand(object obj)
@@ -60,17 +62,9 @@ namespace clientcheck.ViewModel
             return true;
         }
 
-        private void DelClient(object obj)
-        {
-            Debug.WriteLine("여기까지 왔따");
-            DeleteClient(new client() { Name = delName, Age = delAge, Phonenumb = delPhonenumb, delete = true });
-            
-        }
+    
 
-        private bool CanDelClient(object obj)
-        {
-            return true;
-        }
+      
 
         private bool CanshowWindow(object obj)
         {
