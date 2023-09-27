@@ -36,7 +36,7 @@ namespace clientcheck.ViewModel
         private void AddClient(object obj)
         {
             if (!string.IsNullOrWhiteSpace(newName) && (!string.IsNullOrWhiteSpace(newAge)) && !string.IsNullOrWhiteSpace(newPhonenumb))
-            { ModelManager.AddClient(new client() { IsSelected = false, Name = newName, Age = newAge, Phonenumb = newPhonenumb, delete = true }); ; }
+            { ModelManager.AddClient(new client() { Name = newName, Age = newAge, Phonenumb = newPhonenumb, delete = true }); ; }
         }
     }
 }
