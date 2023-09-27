@@ -60,8 +60,12 @@ namespace clientcheck.View
         {
             try
             {
+                if (namebox.Text != "" && agebox.Text != "" && telbox.Text != "")
+                { this.Close(); }
+                else
+                { MessageBox.Show("입력을 확인해주세요"); }
         
-                this.Close();
+                
             }
             catch { MessageBox.Show("입력을 확인해주세요"); }
         }
