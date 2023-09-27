@@ -39,20 +39,14 @@ namespace clientcheck.View
         }
 
 
-        private void Button_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-
-        }
+       
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+      
 
 
 
@@ -60,14 +54,20 @@ namespace clientcheck.View
         {
             try
             {
-                if (namebox.Text != "" && agebox.Text != "" && telbox.Text != "")
+               
+                  if (namebox.Text != "" && agebox.Text != "" && telbox.Text != "")
                 { this.Close(); }
                 else
                 { MessageBox.Show("입력을 확인해주세요"); }
+               
         
                 
             }
             catch { MessageBox.Show("입력을 확인해주세요"); }
         }
-    }
+
+
+
+
+     }
 }

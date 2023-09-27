@@ -13,13 +13,13 @@
     <Grid Background="#F4F8FB">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="69*"/>
+            <RowDefinition Height="76*"/>
             <RowDefinition Height="43.409"/>
             <RowDefinition Height="44.104"/>
-            <RowDefinition Height="43.102"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="29"/>
+            <RowDefinition Height="39.102"/>
             <RowDefinition Height="42"/>
-            <RowDefinition Height="88*"/>
+            <RowDefinition Height="97*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="99*"/>
@@ -27,24 +27,25 @@
             <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0"  Background="#10213C" MouseDown="Grid_MouseDown" Grid.ColumnSpan="3" HorizontalAlignment="Right" Width="300">
+        <Grid Grid.Row="0" Grid.Column="0"  Background="#10213C" MouseDown="Grid_MouseDown" Grid.ColumnSpan="3" HorizontalAlignment="Left" Width="300">
 
         </Grid>
         <Button Grid.Column="2" Height="30"  Width="25" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}" FontWeight="Bold" FontSize="14" Foreground="White" Click="Button_Click"/>
         <Label Content="이름" HorizontalAlignment="Left" Margin="49,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" Background="{x:Null}" Height="34" Width="46"/>
         <Label Content="나이" HorizontalAlignment="Left" Margin="49,0,0,0" Grid.Row="3" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" Height="33" Width="46"/>
-        <Label Content="전화번호" HorizontalAlignment="Left" Margin="13,0,0,0" Grid.Row="4" VerticalAlignment="Center" FontSize="18" FontWeight="Normal" Height="34" Width="82"/>
-        <TextBox x:Name="namebox" Grid.Column="1" Text="{Binding newName}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
-        <TextBox x:Name="agebox" Grid.Column="1" Text="{Binding newAge}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" TextWrapping="Wrap" Width="150" Height="30" FontSize="18" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="telbox" Grid.Column="1" Text="{Binding newPhonenumb}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="4" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
-       
-        <Button x:Name="btn_plus" Content="추가" Command="{Binding AddClientCommand}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="147" Height="41" Background="#FFFFC4C4" Foreground="#FFFFFDFD" FontSize="18" FontWeight="Bold" FontFamily="Yu Gothic UI" BorderBrush="#FFFFE8E8" MouseDown="Button_MouseDown_1" Click="Button_Click_1">
+        <Label Content="전화번호" HorizontalAlignment="Center" Margin="0,29,0,0" Grid.Row="4" VerticalAlignment="Top" FontSize="18" FontWeight="Normal" Height="34" Width="82" Grid.RowSpan="2"/>
+        <TextBox x:Name="namebox"   Grid.Column="1" Text="{Binding newName}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
+        <TextBox x:Name="agebox"  Grid.Column="1" Text="{Binding newAge}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
+        <TextBox x:Name="telbox"  Grid.Column="1" Text="{Binding newPhonenumb}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" TextWrapping="Wrap" Width="150" Height="30" FontSize="18"/>
+
+        <Button x:Name="btn_plus" Content="추가" Command="{Binding AddClientCommand}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="147" Height="41" Background="#FFFFC4C4" Foreground="#FFFFFDFD" FontSize="18" FontWeight="Bold" FontFamily="Yu Gothic UI" BorderBrush="#FFFFE8E8"  Click="Button_Click_1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
             </Button.Resources>
         </Button>
+        <Label Content="(번호 000-0000-0000)" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Bottom" Height="29" Foreground="#FFADDDF9"/>
     </Grid>
 
 
