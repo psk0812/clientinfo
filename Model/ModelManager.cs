@@ -84,7 +84,11 @@ namespace clientcheck.Model
         {
             try
             {
-                using (var sr = new StreamReader("D:/c#/client_finish/Model/data.csv", Encoding.Default)) // 인코딩을 UTF-8로 설정
+                string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+                // 상대 경로를 사용하여 파일 경로 설정
+                string relativeFilePath = Path.Combine(appDirectory, @"..\..\..\Model\data.csv");
+                using (var sr = new StreamReader(relativeFilePath, Encoding.Default)) // 인코딩을 UTF-8로 설정
                 using (var parser = new TextFieldParser(sr))
                 {
                     parser.TextFieldType = FieldType.Delimited;
@@ -120,8 +124,12 @@ namespace clientcheck.Model
         {
             try
             {
+                string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+                // 상대 경로를 사용하여 파일 경로 설정
+                string relativeFilePath = Path.Combine(appDirectory, @"..\..\..\Model\data.csv");
                 Debug.WriteLine("저장");
-                using (var sw = new StreamWriter("D:/c#/client_finish/Model/data.csv", false, Encoding.Default)) // 인코딩을 UTF-8로 설정
+                using (var sw = new StreamWriter(relativeFilePath, false, Encoding.Default)) // 인코딩을 UTF-8로 설정
                 {
                     foreach (var client in ClientList)
                     {
