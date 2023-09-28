@@ -10,8 +10,7 @@
 
 ### 코드 설명
 #### 사용자를 추가 삭제 필터링하는 WPF 어플리케이션
-#### 사용시 Model파일의 data.csv 와 연결되도록 ModelManager의 LoadDataFromCSV()함수와 SaveDataToCSV()의 경로를 바꿔주세요. 
-####(D:/c#/client_finish/Model/data.csv를 고치면 됩니다.)
+
  <img src=https://github.com/psk0812/clientinfo/assets/130532081/d7a1a854-bffe-4edc-b15c-554286a43eee)>
 
 
