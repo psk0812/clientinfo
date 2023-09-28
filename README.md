@@ -10,6 +10,8 @@
 
 ### 코드 설명
 #### 사용자를 추가 삭제 필터링하는 WPF 어플리케이션
+#### 사용시 Model파일의 data.csv 와 연결되도록 ModelManager의 LoadDataFromCSV()함수와 SaveDataToCSV()의 경로를 바꿔주세요. 
+####(D:/c#/client_finish/Model/data.csv를 고치면 됩니다.)
  <img src=https://github.com/psk0812/clientinfo/assets/130532081/d7a1a854-bffe-4edc-b15c-554286a43eee)>
 
 
@@ -21,11 +23,23 @@
 - 바인딩 사용
  
 ## 🗂️ 전체 Repository 구조
+### Command파일
+- RelayCommand.cs
 
-```bash
-code
-  └─── Reboot_all.py # 통합 포렌식 아티팩트 수집 툴
-       ├── MAC_ALL.py # Mac OS 포렌식 아티팩트 툴
-       ├── LINUX_ALL.py # Linux 포렌식 아티팩트 툴 
-       └── reboot3.py # Windows 포렌식 아티팩트 툴
-```
+### Model파일
+- data.csv
+- ModelManager.cs  
+
+### ViewModel파일
+- AddClientViewModel.cs (plus.xaml와 연결)
+- Viewmodel.cs (메인 뷰와 연결)
+
+### View파일
+- plus.xaml (추가시 화면-모달로 뜸)
+- Window1.xaml (메인 뷰화면)
+  
+  
+
+
+
+
